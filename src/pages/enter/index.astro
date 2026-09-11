@@ -12,7 +12,7 @@ import corpus from '../../data/corpus.generated.json';
     <div class="path-controls"><button id="copy-path" type="button">Copy path</button><a href="/enter/">New path</a><a id="show-lineage" href="/lineage/">Show lineage</a></div>
     <p class="quiet-note">Selection algorithm: the first four bytes of SHA-256 of <code>seed-0 | path id | stage</code>, modulo the eligible artifacts for each stage.</p>
   </section>
-  <script type="module" define:vars={{ corpus }}>
+  <script is:inline type="module" define:vars={{ corpus }}>
     const stages = [
       ['fragment', (a) => a.kind === 'fragment' || a.kind === 'koan'],
       ['question', (a) => a.kind === 'dialogue'],
