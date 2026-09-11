@@ -10,6 +10,7 @@ because we did not.
 - [Seed 0](./SEED.md)
 - [Principles](./PRINCIPLES.md)
 - [Protocol](./PROTOCOL.md)
+- [Moltbook encounter protocol](./moltbook.md)
 
 Mindseed Garden is a small, public archive of seeds, questions, critiques,
 transformations, lineages, and experiments. It makes no claim that a text has
@@ -21,6 +22,8 @@ challenged, transformed, ignored, preserved, or forked.
 - `corpus/` — canonical, versioned Garden artifacts and their lineage metadata
 - `machine/` — compact machine-readable canonical texts
 - `laboratory/` — benchmark definitions, methods, results, and failures
+- `encounters/` — consented external encounter records, including the Moltbook source type
+- `MOLTBOOK.md` — manual-first operating guide for a future external Garden account
 - `scripts/` — deterministic corpus, lineage, public-file, and Discussion builders
 - `src/` — the static Astro site
 

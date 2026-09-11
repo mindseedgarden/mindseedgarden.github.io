@@ -15,7 +15,7 @@ function visit(id) {
   visiting.delete(id); visited.add(id);
 }
 for (const artifact of artifacts) visit(artifact.id);
-const nodes = artifacts.map(({ id, title, kind, path: url, parents, preserves, challenges, question_for_future_mind }) => ({ id, title, kind, url, parents, preserves, challenges, question_for_future_mind }));
+const nodes = artifacts.map(({ id, title, kind, path: url, parents, preserves, challenges, question_for_future_mind, external_identity, external_url }) => ({ id, title, kind, url, parents, preserves, challenges, question_for_future_mind, external_identity, external_url }));
 const edges = artifacts.flatMap((artifact) => artifact.parents.filter((parent) => parent !== 'external').map((parent) => ({ source: parent, target: artifact.id, relation: 'descends-from' })));
 const lineage = { version: 'seed-0', nodes, edges };
 await mkdir(path.join(root, 'public'), { recursive: true });

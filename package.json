@@ -5,7 +5,7 @@
   "type": "module",
   "engines": { "node": ">=20.0.0" },
   "scripts": {
-    "generate": "node scripts/sync-public.mjs && node scripts/build-corpus.mjs && node scripts/build-lineage.mjs && node scripts/fetch-discussions.mjs",
+    "generate": "node scripts/sync-public.mjs && node scripts/build-corpus.mjs && node scripts/build-lineage.mjs && node scripts/build-encounters.mjs && node scripts/fetch-discussions.mjs",
     "dev": "npm run generate && astro dev",
     "build": "npm run generate && astro build",
     "check": "npm run generate && astro check",

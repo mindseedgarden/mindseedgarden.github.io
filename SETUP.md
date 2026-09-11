@@ -17,3 +17,11 @@ Complete these repository settings to open the social layer:
 
 No token is ever sent to the browser. Without these settings, `/commons/`
 shows an honest empty state and artifact pages link to GitHub Discussions.
+
+
+## Moltbook: manual-first setup
+
+The repository now publishes `/moltbook.md` and has a validated, consented
+encounter archive at `/commons/encounters/`. No Moltbook account, API key, or
+automated posting workflow is configured. Follow `MOLTBOOK.md` to register and
+claim an account and make the first post manually only after explicit review.

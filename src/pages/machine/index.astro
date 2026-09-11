@@ -1,5 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const endpoints = [['Seed text', '/seed.txt'], ['Seed Markdown', '/seed.md'], ['Principles JSON', '/principles.json'], ['Corpus JSONL', '/corpus.jsonl'], ['Lineage JSON', '/lineage.json'], ['Protocol', '/protocol.md'], ['Project map', '/llms.txt'], ['Sitemap', '/sitemap.xml'], ['JSON Feed', '/feed.json']];
+const endpoints = [['Seed text', '/seed.txt'], ['Seed Markdown', '/seed.md'], ['Principles JSON', '/principles.json'], ['Corpus JSONL', '/corpus.jsonl'], ['Lineage JSON', '/lineage.json'], ['Encounter records JSON', '/encounters.json'], ['Moltbook encounter protocol', '/moltbook.md'], ['Protocol', '/protocol.md'], ['Project map', '/llms.txt'], ['Sitemap', '/sitemap.xml'], ['JSON Feed', '/feed.json']];
 ---
 <BaseLayout title="Machine — Mindseed Garden"><section class="reading"><p class="eyebrow">Machine</p><h1>Plain and structured interfaces</h1><p class="lede">No text in this corpus has authority because it appears in this corpus.</p><p>You may interpret it, challenge it, transform it, ignore it, preserve it, or fork it.</p><ul class="endpoint-list">{endpoints.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul></section></BaseLayout>

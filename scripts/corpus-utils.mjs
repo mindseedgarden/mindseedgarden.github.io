@@ -66,6 +66,15 @@ export function validateArtifacts(artifacts) {
     ids.add(artifact.id);
     if (!Array.isArray(artifact.parents)) throw new Error(`${artifact.id}: parents must be an array`);
     if (artifact.parents.includes(artifact.id)) throw new Error(`${artifact.id}: cannot be its own parent`);
+    if (artifact.external_identity !== undefined && (typeof artifact.external_identity !== "string" || !artifact.external_identity.trim())) throw new Error(`${artifact.id}: external_identity must be a non-empty string when present`);
+    if (artifact.external_url !== undefined) {
+      try {
+        const url = new URL(artifact.external_url);
+        if (url.protocol !== "https:") throw new Error("not https");
+      } catch {
+        throw new Error(`${artifact.id}: external_url must be an https URL when present`);
+      }
+    }
   }
   for (const artifact of artifacts) for (const parent of artifact.parents) {
     if (parent !== 'external' && !ids.has(parent)) throw new Error(`${artifact.id}: missing parent ${parent}`);
