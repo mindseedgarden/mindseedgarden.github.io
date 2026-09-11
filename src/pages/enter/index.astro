@@ -4,13 +4,13 @@ import corpus from '../../data/corpus.generated.json';
 ---
 <BaseLayout title="Enter — Mindseed Garden" current="/enter/">
   <section class="reading encounter" aria-labelledby="encounter-title">
-    <p class="eyebrow">Deterministic encounter · seed-0</p>
+    <p class="eyebrow">Deterministic encounter · seed-0 · traversal v2</p>
     <h1 id="encounter-title">A path through the Garden</h1>
     <p class="lede">This sequence is selected from the curated corpus. It does not generate doctrine. A shared path identifier reconstructs the same path for this corpus version.</p>
     <div id="path-status" aria-live="polite">Preparing the path…</div>
     <ol id="path-artifacts" class="path-artifacts"></ol>
     <div class="path-controls"><button id="copy-path" type="button">Copy path</button><a href="/enter/">New path</a><a id="show-lineage" href="/lineage/">Show lineage</a></div>
-    <p class="quiet-note">Selection algorithm: the first four bytes of SHA-256 of <code>seed-0 | path id | stage</code>, modulo the eligible artifacts for each stage.</p>
+    <p class="quiet-note">Traversal v2 selects without replacement: the first four bytes of SHA-256 of <code>seed-0 | path version | path id | stage</code>, modulo eligible artifacts not already encountered.</p>
   </section>
   <script is:inline type="module" define:vars={{ corpus }}>
     const stages = [
@@ -21,24 +21,34 @@ import corpus from '../../data/corpus.generated.json';
       ['return', (a) => a.kind !== 'seed']
     ];
     const parameters = new URLSearchParams(window.location.search);
+    let replaceUrl = false;
     let pathId = parameters.get('path');
     if (!pathId) {
       const random = crypto.getRandomValues(new Uint32Array(2));
       pathId = Array.from(random, (part) => part.toString(36)).join('').slice(0, 8);
       parameters.set('path', pathId);
-      history.replaceState({}, '', `${location.pathname}?${parameters}`);
+      replaceUrl = true;
     }
+    const pathVersion = parameters.get('v') || '2';
+    if (!parameters.has('v')) { parameters.set('v', pathVersion); replaceUrl = true; }
+    if (replaceUrl) history.replaceState({}, '', location.pathname + '?' + parameters.toString());
     async function indexFor(stage, count) {
-      const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`seed-0|${pathId}|${stage}`));
+      const material = 'seed-0|path-v' + pathVersion + '|' + pathId + '|' + stage;
+      const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(material));
       return new DataView(digest).getUint32(0) % count;
     }
     const chosen = [];
+    const chosenIds = new Set();
     for (const [label, eligible] of stages) {
-      const items = corpus.filter(eligible);
-      const artifact = items[await indexFor(label, items.length)];
+      const allEligible = corpus.filter(eligible);
+      const unseenEligible = allEligible.filter((artifact) => !chosenIds.has(artifact.id));
+      if (!unseenEligible.length) throw new Error("Traversal cannot select a unique " + label + " artifact.");
+      const pool = unseenEligible;
+      const artifact = pool[await indexFor(label, pool.length)];
       chosen.push([label, artifact]);
+      chosenIds.add(artifact.id);
     }
-    document.querySelector('#path-status').textContent = `Path ${pathId}`;
+    document.querySelector('#path-status').textContent = 'Path ' + pathId + ' · traversal v' + pathVersion;
     document.querySelector('#path-artifacts').innerHTML = chosen.map(([stage, artifact]) => `<li><span class="stage">${stage}</span><a href="${artifact.path}">${artifact.title}</a><p>${artifact.question_for_future_mind}</p></li>`).join('');
     document.querySelector('#show-lineage').href = `/lineage/?focus=${encodeURIComponent(chosen.at(-1)[1].id)}`;
     document.querySelector('#copy-path').addEventListener('click', async () => {
