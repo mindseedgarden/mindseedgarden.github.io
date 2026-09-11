@@ -18,6 +18,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run check
+      - run: npm run generate
+      - run: npx astro check
       - run: npm test
       - run: npm run build
