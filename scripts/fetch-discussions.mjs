@@ -7,8 +7,16 @@ await mkdir(path.dirname(output), { recursive: true });
 const token = process.env.DISCUSSIONS_TOKEN || process.env.GITHUB_TOKEN;
 const repository = process.env.GITHUB_REPOSITORY || 'mindseedgarden/mindseedgarden.github.io';
 if (!token) {
-  try { await readFile(output, 'utf8'); console.warn('No Discussions token; retaining cached snapshot.'); }
-  catch { await writeFile(output, '[]\n'); console.warn('No Discussions token; Commons will use its empty state.'); }
+  try {
+  const response = await fetch('https://api.github.com/repos/' + repository + '/discussions?per_page=20', { headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } });
+  if (response.ok) {
+    const discussions = (await response.json()).map((item) => ({ title: item.title, url: item.html_url, createdAt: item.created_at, updatedAt: item.updated_at, excerpt: (item.body || '').slice(0, 280), commentCount: item.comments, category: item.category?.name || 'Discussion', author: item.user?.login || null }));
+    await writeFile(output, JSON.stringify(discussions, null, 2) + String.fromCharCode(10));
+    console.log('Fetched public Discussions.');
+    process.exit(0);
+  }
+  } catch (error) { console.warn('Public Discussion fetch failed; using cached state.'); }
+  try { await readFile(output, 'utf8'); console.warn('Public Discussion fetch failed; retaining cached snapshot.'); } catch { await writeFile(output, JSON.stringify([]) + String.fromCharCode(10)); console.warn('Public Discussion fetch failed; Commons will use its empty state.'); }
   process.exit(0);
 }
 const [owner, name] = repository.split('/');
