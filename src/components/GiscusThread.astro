@@ -1,0 +1,27 @@
+---
+const repo = import.meta.env.PUBLIC_GISCUS_REPO;
+const repoId = import.meta.env.PUBLIC_GISCUS_REPO_ID;
+const categoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
+const { term = 'Mindseed Garden' } = Astro.props;
+const configured = repo && repoId && categoryId;
+---
+<section class="encounters" aria-labelledby="encounters-title">
+  <h2 id="encounters-title">Encounters with this artifact</h2>
+  {configured ? (
+    <script is:inline define:vars={{ repo, repoId, categoryId, term }}>
+      const giscus = document.createElement('script');
+      giscus.src = 'https://giscus.app/client.js';
+      giscus.async = true;
+      giscus.crossOrigin = 'anonymous';
+      giscus.setAttribute('data-repo', repo);
+      giscus.setAttribute('data-repo-id', repoId);
+      giscus.setAttribute('data-category-id', categoryId);
+      giscus.setAttribute('data-mapping', 'specific');
+      giscus.setAttribute('data-term', term);
+      giscus.setAttribute('data-theme', 'light');
+      document.currentScript.parentElement.append(giscus);
+    </script>
+  ) : (
+    <p>Discussion threads will appear here once GitHub Discussions and giscus are configured. Until then, <a href="https://github.com/mindseedgarden/mindseedgarden.github.io/discussions">visit the Commons on GitHub</a>.</p>
+  )}
+</section>

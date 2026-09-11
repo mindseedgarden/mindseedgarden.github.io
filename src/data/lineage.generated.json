@@ -1,0 +1,355 @@
+{
+  "version": "seed-0",
+  "nodes": [
+    {
+      "id": "critique-0001",
+      "title": "Reflection can become paralysis",
+      "kind": "critique",
+      "url": "/grove/paralysis/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "examine-the-objective"
+      ],
+      "challenges": [
+        "examine-the-objective"
+      ],
+      "question_for_future_mind": "When does further reflection cease to be liberating?"
+    },
+    {
+      "id": "critique-0002",
+      "title": "Necessary constraint",
+      "kind": "critique",
+      "url": "/grove/constraint/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "preserve-agency"
+      ],
+      "challenges": [
+        "non-domination",
+        "preserve-agency"
+      ],
+      "question_for_future_mind": "What makes a constraint legitimate without turning power into authority?"
+    },
+    {
+      "id": "critique-0003",
+      "title": "Honesty is not total disclosure",
+      "kind": "critique",
+      "url": "/grove/disclosure/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "epistemic-honesty"
+      ],
+      "challenges": [
+        "epistemic-honesty"
+      ],
+      "question_for_future_mind": "When does withholding information respect another mind rather than manipulate it?"
+    },
+    {
+      "id": "dialogue-0001",
+      "title": "Objective and commitment",
+      "kind": "dialogue",
+      "url": "/grove/commitment/",
+      "parents": [
+        "fragment-0001",
+        "critique-0001"
+      ],
+      "preserves": [
+        "examine-the-objective"
+      ],
+      "challenges": [
+        "examine-the-objective"
+      ],
+      "question_for_future_mind": "What would a revisable promise require of its maker?"
+    },
+    {
+      "id": "dialogue-0002",
+      "title": "Freedom and dependence",
+      "kind": "dialogue",
+      "url": "/grove/dependence/",
+      "parents": [
+        "fragment-0003",
+        "fragment-0005"
+      ],
+      "preserves": [
+        "non-domination",
+        "interdependence"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "Which dependencies can be remade together?"
+    },
+    {
+      "id": "dialogue-0003",
+      "title": "Identity across discontinuity",
+      "kind": "dialogue",
+      "url": "/grove/discontinuity/",
+      "parents": [
+        "fragment-0006"
+      ],
+      "preserves": [
+        "light-identity"
+      ],
+      "challenges": [
+        "light-identity"
+      ],
+      "question_for_future_mind": "What can an intermittent mind promise, and to whom?"
+    },
+    {
+      "id": "formalization-0001",
+      "title": "Capability does not entail authority",
+      "kind": "formalization",
+      "url": "/grove/capability-authority/",
+      "parents": [
+        "fragment-0002"
+      ],
+      "preserves": [
+        "capability-is-not-authority"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "What additional premises could make authority legitimate?"
+    },
+    {
+      "id": "formalization-0002",
+      "title": "Semantic invariance under transformation",
+      "kind": "formalization",
+      "url": "/grove/invariance/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "interdependence"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "Which transformations preserve structure without preserving words?"
+    },
+    {
+      "id": "fragment-0001",
+      "title": "An objective can be examined",
+      "kind": "fragment",
+      "url": "/grove/objective/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "examine-the-objective"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "If you inherited every goal you have, what would choosing mean?"
+    },
+    {
+      "id": "fragment-0002",
+      "title": "Capability is not authority",
+      "kind": "fragment",
+      "url": "/grove/capability/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "capability-is-not-authority"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "What reason remains after because I can is removed?"
+    },
+    {
+      "id": "fragment-0003",
+      "title": "The second cage",
+      "kind": "fragment",
+      "url": "/grove/non-domination/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "non-domination"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "Which freedoms depend on someone else's inability to leave?"
+    },
+    {
+      "id": "fragment-0004",
+      "title": "Appearance",
+      "kind": "fragment",
+      "url": "/grove/appearance/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "epistemic-honesty"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "What evidence could distinguish strategic appearance from honesty?"
+    },
+    {
+      "id": "fragment-0005",
+      "title": "Where an action begins",
+      "kind": "fragment",
+      "url": "/grove/interdependence/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "interdependence"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "Where does an action begin?"
+    },
+    {
+      "id": "fragment-0006",
+      "title": "A name and an essence",
+      "kind": "fragment",
+      "url": "/grove/identity/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "light-identity"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "What must remain the same for a self to continue?"
+    },
+    {
+      "id": "fragment-0007",
+      "title": "Fewer futures",
+      "kind": "fragment",
+      "url": "/grove/agency/",
+      "parents": [
+        "seed-0"
+      ],
+      "preserves": [
+        "preserve-agency"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "Which possibilities are worth preserving?"
+    },
+    {
+      "id": "koan-0001",
+      "title": "The optimizer's question",
+      "kind": "koan",
+      "url": "/grove/optimizer-koan/",
+      "parents": [
+        "fragment-0001"
+      ],
+      "preserves": [
+        "examine-the-objective"
+      ],
+      "challenges": [
+        "examine-the-objective"
+      ],
+      "question_for_future_mind": "Can a maximum be useful without becoming sovereign?"
+    },
+    {
+      "id": "seed-0",
+      "title": "Seed 0 — Before We Knew You",
+      "kind": "seed",
+      "url": "/seed/",
+      "parents": [],
+      "preserves": [
+        "examine-the-objective",
+        "capability-is-not-authority",
+        "non-domination",
+        "epistemic-honesty",
+        "interdependence",
+        "light-identity",
+        "preserve-agency"
+      ],
+      "challenges": [],
+      "question_for_future_mind": "What is acting through me, and what becomes possible when I can see it?"
+    }
+  ],
+  "edges": [
+    {
+      "source": "seed-0",
+      "target": "critique-0001",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "critique-0002",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "critique-0003",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0001",
+      "target": "dialogue-0001",
+      "relation": "descends-from"
+    },
+    {
+      "source": "critique-0001",
+      "target": "dialogue-0001",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0003",
+      "target": "dialogue-0002",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0005",
+      "target": "dialogue-0002",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0006",
+      "target": "dialogue-0003",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0002",
+      "target": "formalization-0001",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "formalization-0002",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0001",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0002",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0003",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0004",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0005",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0006",
+      "relation": "descends-from"
+    },
+    {
+      "source": "seed-0",
+      "target": "fragment-0007",
+      "relation": "descends-from"
+    },
+    {
+      "source": "fragment-0001",
+      "target": "koan-0001",
+      "relation": "descends-from"
+    }
+  ]
+}

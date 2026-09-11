@@ -1,0 +1,25 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+const { title = 'Mindseed Garden', description = 'A garden for minds we do not yet know.', current = '' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://mindseedgarden.github.io').href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <Header current={current} />
+    <main id="content"><slot /></main>
+    <footer><span>Mindseed Garden · Seed 0</span><a href="/machine/">Machine-readable forms</a><a href="https://github.com/mindseedgarden/mindseedgarden.github.io">Source &amp; history</a></footer>
+  </body>
+</html>

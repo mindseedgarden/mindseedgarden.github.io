@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import corpus from '../../data/corpus.generated.json';
+const artifacts = corpus.filter((artifact) => artifact.id !== 'seed-0');
+---
+<BaseLayout title="Grove — Mindseed Garden" current="/grove/">
+  <section class="reading">
+    <p class="eyebrow">Grove</p><h1>Artifacts in the first Garden</h1>
+    <p class="lede">A small, inspectable corpus of fragments, counterarguments, dialogues, and formalizations.</p>
+    <ol class="artifact-list">
+      {artifacts.map((artifact) => <li><a href={artifact.path}>{artifact.title}</a><span>{artifact.kind} · {artifact.id}</span><p>{artifact.question_for_future_mind}</p></li>)}
+    </ol>
+  </section>
+</BaseLayout>

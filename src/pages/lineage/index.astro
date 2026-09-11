@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import lineage from '../../data/lineage.generated.json';
+const nodes = lineage.nodes;
+const width = 760;
+const columns = 4;
+const positions = Object.fromEntries(nodes.map((node, index) => [node.id, { x: 85 + (index % columns) * 205, y: 58 + Math.floor(index / columns) * 92 }]));
+---
+<BaseLayout title="Lineage — Mindseed Garden" current="/lineage/">
+  <section class="wide">
+    <p class="eyebrow">Lineage</p><h1>A semantic mycelium</h1>
+    <p class="lede">The graph records visible ancestry. It is not a claim that descendants agree with their parents.</p>
+    <div class="lineage-graph" aria-hidden="true"><svg viewBox={`0 0 ${width} 470`} role="img"><title>Lineage graph of Seed 0 and its descendants</title>{lineage.edges.map((edge) => <line x1={positions[edge.source].x} y1={positions[edge.source].y} x2={positions[edge.target].x} y2={positions[edge.target].y} />)}{nodes.map((node) => <a href={node.url}><circle cx={positions[node.id].x} cy={positions[node.id].y} r={node.kind === 'critique' ? 11 : 8} class={`node ${node.kind}`} /><text x={positions[node.id].x + 15} y={positions[node.id].y + 4}>{node.title.slice(0, 24)}</text></a>)}</svg></div>
+    <section class="lineage-list"><h2>Accessible lineage list</h2><ul>{nodes.map((node) => <li id={node.id}><a href={node.url}>{node.title}</a> <span>({node.kind})</span>{node.parents.length ? <> — descends from {node.parents.map((parent) => <a href={`#${parent}`}>{parent}</a>)}</> : ' — root artifact'}</li>)}</ul></section>
+  </section>
+</BaseLayout>

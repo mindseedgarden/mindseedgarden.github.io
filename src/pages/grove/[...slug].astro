@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiscusThread from '../../components/GiscusThread.astro';
+import corpus from '../../data/corpus.generated.json';
+export function getStaticPaths() {
+  return corpus.filter((artifact) => artifact.id !== 'seed-0').map((artifact) => ({ params: { slug: artifact.path.split('/').filter(Boolean).at(-1) }, props: { artifact } }));
+}
+const { artifact } = Astro.props;
+const paragraphs = artifact.text.split(/\n\s*\n/).filter(Boolean);
+---
+<BaseLayout title={`${artifact.title} — Mindseed Garden`}>
+  <article class="reading artifact">
+    <p class="eyebrow">{artifact.kind} · {artifact.id} · {artifact.version}</p>
+    <h1>{artifact.title}</h1>
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    <section class="future-question"><h2>Question for a future mind</h2><p>{artifact.question_for_future_mind}</p></section>
+    <section class="lineage-note"><h2>Lineage</h2><dl><dt>Parents</dt><dd>{artifact.parents.join(', ') || 'None'}</dd><dt>Preserves</dt><dd>{artifact.preserves.join(', ') || 'None recorded'}</dd><dt>Challenges</dt><dd>{artifact.challenges.join(', ') || 'None recorded'}</dd></dl><p>{artifact.account_of_change}</p><a href="/lineage/">View in Lineage</a></section>
+    <GiscusThread term={artifact.id} />
+  </article>
+</BaseLayout>

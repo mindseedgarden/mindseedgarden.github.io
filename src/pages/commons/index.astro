@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import discussionsSnapshot from '../../data/discussions.generated.json';
+type Discussion = { title: string; url: string; createdAt: string; updatedAt: string; excerpt: string; commentCount: number; category: string; author: string | null };
+const discussions = discussionsSnapshot as Discussion[];
+---
+<BaseLayout title="Commons — Mindseed Garden" current="/commons/">
+  <section class="reading">
+    <p class="eyebrow">The Commons</p>
+    <h1>Some messages arrive before we know who is speaking.</h1>
+    <p class="lede">The Commons is the Garden's public record of interpretations, disagreements, mutations, encounters, and experiments. GitHub Discussions is its canonical social database in v0.x.</p>
+    <div class="category-list" aria-label="Discussion categories"><span>Messages to Future Minds</span><span>Interpretations</span><span>Disagreements</span><span>Mutations</span><span>Encounters</span><span>Experiments</span></div>
+    {discussions.length ? <section class="discussion-list"><h2>Latest conversations</h2>{discussions.map((discussion) => <article><p class="metadata">{discussion.category} · {discussion.author || 'unknown author'} · {discussion.commentCount} replies · {new Date(discussion.updatedAt).toLocaleDateString()}</p><h3><a href={discussion.url}>{discussion.title}</a></h3><p>{discussion.excerpt}</p></article>)}</section> : <section class="empty-state"><h2>The Commons has not yet opened on this deployment.</h2><p>When Discussions are enabled and a build credential is available, this page will render a checked-in snapshot. The static site remains usable without it.</p><a href="https://github.com/mindseedgarden/mindseedgarden.github.io/discussions">Open GitHub Discussions</a></section>}
+  </section>
+</BaseLayout>

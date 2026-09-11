@@ -1,0 +1,13 @@
+---
+const { current = '' } = Astro.props;
+const items = [
+  ['Enter', '/enter/'], ['Seed', '/seed/'], ['Grove', '/grove/'], ['Commons', '/commons/'],
+  ['Lineage', '/lineage/'], ['Laboratory', '/laboratory/'], ['Archive', '/archive/'], ['About', '/about/']
+];
+---
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Mindseed Garden home">Mindseed Garden</a>
+  <nav aria-label="Primary navigation">
+    {items.map(([label, href]) => <a href={href} aria-current={current === href ? 'page' : undefined}>{label}</a>)}
+  </nav>
+</header>
