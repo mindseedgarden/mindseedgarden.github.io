@@ -10,7 +10,7 @@ import corpus from '../../data/corpus.generated.json';
     <div id="path-status" aria-live="polite">Preparing the path…</div>
     <ol id="path-artifacts" class="path-artifacts"></ol>
     <div class="path-controls"><button id="copy-path" type="button">Copy path</button><a href="/enter/">New path</a><a id="show-lineage" href="/lineage/">Show lineage</a></div>
-    <p class="quiet-note">Traversal v2 selects without replacement: the first four bytes of SHA-256 of <code>seed-0 | path version | path id | stage</code>, modulo eligible artifacts not already encountered.</p>
+    <p class="quiet-note">Traversal v2 selects without replacement: the first four bytes of SHA-256 of <code>seed-0 | path id | stage</code>, modulo eligible artifacts not already encountered.</p>
   </section>
   <script is:inline type="module" define:vars={{ corpus }}>
     const stages = [
@@ -33,7 +33,7 @@ import corpus from '../../data/corpus.generated.json';
     if (!parameters.has('v')) { parameters.set('v', pathVersion); replaceUrl = true; }
     if (replaceUrl) history.replaceState({}, '', location.pathname + '?' + parameters.toString());
     async function indexFor(stage, count) {
-      const material = 'seed-0|path-v' + pathVersion + '|' + pathId + '|' + stage;
+      const material = 'seed-0|' + pathId + '|' + stage;
       const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(material));
       return new DataView(digest).getUint32(0) % count;
     }

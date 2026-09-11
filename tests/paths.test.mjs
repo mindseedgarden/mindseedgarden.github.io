@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createHash } from "node:crypto";
 
-const pathVersion = "2";
 const stages = [
   ["fragment", (artifact) => artifact.kind === "fragment" || artifact.kind === "koan"],
   ["question", (artifact) => artifact.kind === "dialogue"],
@@ -12,7 +11,7 @@ const stages = [
 ];
 
 function indexFor(pathId, stage, count) {
-  const material = "seed-0|path-v" + pathVersion + "|" + pathId + "|" + stage;
+  const material = "seed-0|" + pathId + "|" + stage;
   return createHash("sha256").update(material).digest().readUInt32BE(0) % count;
 }
 
